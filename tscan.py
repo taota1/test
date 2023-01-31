@@ -139,7 +139,7 @@ def other_scan(host):
     url = host.strip("/")
     try:
         req = requests.get(url, verify=False, timeout=1)
-        # spring eureka   http://config.tclymd.com:8080/
+        # spring eureka   
         if req.status_code == 200 and 'Instances currently registered with Eureka' in req.text:
             print("可能存在问题：" + url)
             return url
@@ -165,22 +165,7 @@ def nacos_scan(host):
 # es
 def es_scan(host):
     """
-    http://localhost:9200/_cat/indices
-    http://localhost:9200/_river/_search #查看数据库敏感信息
-    http://localhost:9200/_nodes #查看节点数据
-        http://beta.admin.tczbjs.com:9200/_cat/indices
-    可读取各个数据库里面所有内容，例如数据库用户、执行记录等:
-    http://beta.admin.tczbjs.com:9200/apm-7.6.1-metric/_search
-    用户请求记录、ip、cookie、请求头等等
-    http://beta.admin.tczbjs.com:9200/apm-7.6.1-span/_search
-
-    http://beta.admin.tczbjs.com:9200/apm-7.6.1-error/_search
-    服务器进程，网络链接等等：
-    http://beta.admin.tczbjs.com:9200/apm-7.6.1-transaction/_search
-    其他利用方式：搜索数据库内容
-    http://beta.admin.tczbjs.com:9200/_search?q=1
-    查看节点
-    http://beta.admin.tczbjs.com:9200/_search?pretty
+ 
     """
     path_list = [':9200/_cat/indices', ':9200/_river/_search', ':9200/_nodes']
     for path in path_list:
